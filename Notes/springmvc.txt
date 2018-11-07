@@ -1,0 +1,120 @@
+	 
+	 
+	 
+	 
+Spring MVC
+===========
+> The Spring Web MVC framework provides a model-view-controller
+  architecture and ready components that can be used
+  to develop flexible and loosely coupled web applications.
+> Framework for building web app 
+> Based on Model View Controller Design pattern
+> All the concepts we have learnt like IOC, DI we can practically see that.
+
+
+
+
+
+
+
+
+
+
+
+
+MVC Architecture
+=================
+> Model View Controller (MVC) is a software architecture pattern,
+ commonly used to design web apps.
+> In general, it separates out the application logic into
+ three separate parts, promoting modularity and ease
+ of integration and reuse.
+> It also makes applications more flexible.
+> The three parts of the MVC software-design pattern
+ can be described as follows:
+		1. Model: Manages data and business logic.(business logic)
+		2. View: Handles layout and display.(UI logic)
+		3. Controller: Routes commands to the model
+			and view parts.(navigation logic)
+
+
+
+
+			
+			
+SpringMVC benefits
+==================
+> Spring way of building web app in java
+> managing web requests is easy
+> flexible for view layer
+
+
+
+
+
+
+
+Spring configuration process -1
+===============================
+1. add configuration file WEB-INF/web.xml
+	
+2. configure SpringMVC DispatcherServlet(Front controller)
+
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+
+3. Set up url-mapping for SpringMVC DispatcherServlet.
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	
+spring configuration process-2
+==============================
+1. add configuration file WEB-INF/spring-mvc-demo-servlet.xml
+
+2. add support for spring component scanning
+	<context:component-scan base-package="packageName" />
+	
+3. add support for conversion, formatting and validations
+	<mvc:annotation-driven/>
+	
+4. configure SpringMVC View Resolver
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+5. Give a configuration file location to SpringMVC DispatcherServlet
+	<init-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>WEB-INF/spring-mvc-demo-servlet.xml</param-value>
+	</init-param>
+	
+6. eagerly load the DispatcherServlet
+	<load-on-startup>1</load-on-startup>
+
+
+	
+Development Process
+===================
+1. Create controller class
+	> Controller class is a class which is annotated with "@Controller" annotation
+	> @Controller inherits "@Component"
+	> automatically container creates a object of class which is annotated
+		with @Controller/@Component
+		
+		eg:
+			@Controller
+			class MyController
+			{
+				//controller methods goes here
+			}
+2. define controller method.
+3. add requestmapping to controller method.
+4. return a view name.
+5. develop view page.

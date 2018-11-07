@@ -1,0 +1,155 @@
+
+
+What is FrameWork ???
+---------------------
+
+They are a large Bodies (set of built-In classes and libraries and interfaces)
+of pre-written code which helps us to perform a task 
+efficiently with the reduction of Boiler Plate Code.
+
+With the help of FrameWorks the work of the Developer to write the number of lines
+reduces and it makes application implementation as well as code look easy
+and simple.
+
+
+
+
+
+
+
+
+
+
+
+
+Different Types of Java FrameWorks
+----------------------------------
+
+1. Spring and Spring MVC.
+2. Structs.
+3. Hibernate.
+4. JSF.
+5. Google Web Toolkit.
+6. Vaaldin.
+7. Grails.
+
+etc....
+
+
+
+
+
+
+
+
+
+
+Hibernate
+=========
+
+Hibernate ORM (Hibernate in short) is an object-relational 
+mapping tool for the Java programming language.
+It provides a framework for mapping an object-oriented domain 
+model to a relational database. 
+
+Hibernate handles object-relational impedance mismatch 
+problems by replacing direct, persistent database accesses 
+with high-level object handling functions.
+
+It is an open source persistent framework created by Gavin King in 2001.
+
+
+
+
+
+
+
+
+
+
+
+Why Go For Hibernate ???
+========================
+
+When we work with an object-oriented system, 
+there is a mismatch between the object model 
+and the relational database.
+
+
+
+We End Up With
+
+G I I A N
+
+G --> Granularity
+
+I --> Inheritance
+
+I --> Identity
+
+A --> Associations
+
+N --> Navigation
+
+
+This is the Reason we make use of Object to Relational Mapping.
+
+
+
+
+
+
+
+
+
+What is ORM ?
+-------------
+
+It is a programming technique for converting 
+data between relational 
+databases and object oriented programming 
+languages such as Java, C#, etc.
+
+
+
+
+
+
+
+
+
+
+
+Advantages of ORM...
+--------------------
+
+1. Let’s business code access objects rather than DB tables.
+2. Hides details of SQL queries from OO logic.
+3. Internally Based on JDBC.
+4. No need to deal with the database implementation.
+5. Entities based on business concepts rather than database structure.
+6. Fast development of application.
+
+
+
+
+
+
+
+
+
+Reason to Go for Hibernate..
+----------------------------
+
+1. Hibernate makes our application code independent of DB.
+2. Hibernate significantly reduce development time & 
+   reduces the complex data access code.
+3. Hibernate takes care of mapping java classes to DB tables.
+4. Hibernate takes care of converting the ResultSet data into 
+   simple Java Object.
+5. Basic to less knowledge of SQL is required. Hibernate internally takes care 
+   of issuing SQL Queries specific to underlying DB.
+6. Maintenance of the application is easier.
+
+
+

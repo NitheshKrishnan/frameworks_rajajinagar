@@ -1,0 +1,596 @@
+
+
+
+Spring Framework
+===============
+> Spring is a open source framework and it was developed to make 
+	development of enterprise web application easy.
+
+> Spring framework was developed by "Rod johnson" in the year 2003
+
+>Current version of spring is 5.x version
+
+> Official website of spring is www.spring.io
+
+
+
+
+
+
+
+
+
+
+
+
+
+Features of spring framework
+============================
+> lightweight
+> Dependency Injection (DI)/ Inversion of Control
+> Aspect Oriented (AOP)
+> Easy to test
+> Non invasive
+> Modular
+> Easy Integration with other technologies like 
+  hibernate, REST, JavaMail, JNDI  etc...
+
+
+
+
+
+
+
+
+Spring Architecture
+================
+Spring consists of many modules in it 
+1. Core Container
+2. AOP
+3. Data Access Layer
+4. Web Layer
+5. Test layer
+
+
+
+
+
+Core Container
+=============
+> Core Container is a main component of Spring it is responsible for managing beans
+> It has bean factory to create beans
+> Core to add dependencies, read config files etc..
+> Context holds the beans in the memory
+> SpEL (Spring Expression Language) its a language used within 
+  config file to refer other beans
+
+
+
+
+
+
+
+
+
+AOP (Aspect Oriented Programming)
+==============================
+> it is used to create application wide services like logging, 
+	security, transactions etc...
+in a declarative manner without modifying the existing code.
+
+
+
+
+Data Access Layer
+==============
+> This layer is used to communicate with any type of database
+it can be relational db or nosql db (mongoDB, cassandra etc...)
+> it consists of JDBC, spring provides lots of helper classes to reduce JDBC code by 50%
+> it has ORM Support which helps to integrate with hibernate, JPA etc...
+
+note: 
+JDBC (Java DataBase Connectivity)
+ORM (Object Relational Mapping)
+OXM (Object XML Mapping)
+JMS (Java Messaging Services)
+
+
+
+
+
+Web Layer
+==========
+Web module supports the development of web based application
+ with a help of spring MVC etc..
+
+Test Layer
+========
+The Test module supports the testing of Spring components 
+with JUnit or TestNG frameworks.
+
+
+
+
+
+
+
+
+
+Spring Bean Containers/ IOC container
+===============================
+>The Spring container is at the core of the Spring Framework.
+
+> The container will create the objects, wire them together and configure them.
+
+> Spring container manages their complete life cycle from creation till destruction.
+
+>The Spring container uses DI to manage the components that make up an application.
+
+
+
+
+
+
+
+
+
+
+
+there are 2 types of container 
+
+1. BeanFactory (org.springframework.beans.factory.BeanFactory)
+2. ApplicationContext (org.springframework.context.ApplicationContext)
+
+
+
+
+
+
+
+
+
+
+Inversion of Control
+===============
+Inversion of Control is a principle in software engineering by 
+which the control of objects or portions of a program is 
+transferred to a container or framework.
+
+
+Beans: Objects that are created and managed by Spring container are called beans.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dependency Injection(DI)/Bean Wiring
+===============================
+> Dependency Injection (DI) is a software design pattern that implements inversion of 
+control for resolving dependencies.
+
+> An injection is the passing of a dependency to a dependent object that would use it.
+
+> In simple words Dependency Injection is  one of the mechanism used for initializing
+   instance variables.
+
+> Spring offers two ways to implement Dependency Injection
+	1. Setter Injection: Injection of dependencies using setter method of the bean
+	2. Constructor Injection: Injection of dependencies using constructors
+
+> Using DI we can inject the folowing types of values
+
+1. Primitives
+2. String
+3. Wrapper
+4. Set
+5. List
+6. Map
+7. User Defined Data types (i.e class types)
+
+
+
+
+Dependency Injection of User Defined Data types
+=======================================
+>Dependency Injection of user defined data types is also known as "bean wiring".
+
+>Bean wiring is a process of associating a bean. (Has-A relationship).
+
+>Bean wiring can be done in 2 ways
+	
+	1.Explicit wiring: using xml(by using <property> tag for setter or <constructor-arg>
+	for constructor injection).
+	
+	2. Implicit wiring: it can be done in 2 ways
+			a. using xml(using "autowire" attribute of <bean> tag)	
+			b. using annotations(using "@Autowired" spring annotation)
+
+
+
+
+
+
+
+
+
+Explicit wiring
+============
+>it can be done by using "ref" attribute in both <property> and <constructor-arg>
+
+> for setter injection 
+	eg:
+		 <bean id = "classA" class="org.jspiders.ClassA"/>
+	     	 <bean id="classB" class="org.jspiders.ClassB">
+			<property name = "a" ref="classA"/>
+	     	 </bean>	
+
+>for constructor injection
+	eg:
+		 <bean id = "classA" class="org.jspiders.ClassA"/>
+	     	 <bean id="classB" class="org.jspiders.ClassB">
+			<constructor-arg name="a" ref="classA"/>
+	     	 </bean>
+
+
+
+
+			
+Implicit wiring(Bean Autowiring)
+==========================
+> The major drawback of explicit wiring is the bean wiring has to be done 
+  explicitly by the developer and requires 
+  too much of xml configuring for registering the beans and for wiring.
+
+>if we use implicit wiring/autowiring container takes care of wiring
+
+> it can be done in 2 ways
+	
+xml configuration(using autowire attribute in <bean>)
+==========================================
+>In this approach we register the beans is configuration xml file and the wiring will be 
+done implicitly by the container.
+>Eg: <bean id="classA" autowire="autowireType"/>
+
+
+
+
+
+-------------------------------------------------------------------------------------
+| autowiretype	|	how wiring will be done											|            
+-------------------------------------------------------------------------------------
+|1.  no			| No implicit wiring will be done perform only explicit wiring. 	| 
+|																					|
+|2. byName		| property name in the bean class and and bean id should be same	|
+|				|	(Setter injection will be used).								|
+|3.byType		|  property type in the bean class and type in the bean should be	|
+|				|	same (Setter injection will be used).							|   
+|4. constructor	|  parameter type of the constructor and bean type should be same	|	
+|				|																	|
+|5. default		| it depends on the default-autowire attribute in <beans> tag.		|
+-------------------------------------------------------------------------------------
+
+
+
+
+
+
+Implicit wiring using annotations
+==========================
+> The basic idea of annotation is to avoid too much of lines in 
+  a xml (which looks complicated)
+
+> It helps to do configuration in the same java file instead of using 
+  external files like (xml file)
+
+> to enable annotation in spring use <context: annotation-config/> 
+  tag in the configuration xml file.
+
+> implicit wiring or autowiring can be done using any of the below approach
+	> Spring annotations (@Autowired)
+	> Java annotations(@Inject)
+
+a. Using spring annotation "@Autowired"
+======================================
+> @Autowired annotation will do  autowiring byType;
+> @Autowired annotation can be applied to
+	1. fields
+	2. constructor
+	3. setter
+	4. arbitrary methods
+
+b. Using java annotation "@Inject"
+============================
+> @Inject is same as @Autowired
+> @Inject will do autowiring byType.
+>  this  annotation can be applied to
+	1. fields
+	2. constructor
+	3. setter
+	4. arbitrary methods
+
+
+
+
+Component Scanning
+=================
+> It is a mechanism used to detect and register 
+  the beans in the spring container automatically
+
+  >Generally we always register beans in xml file using <bean> tag 
+
+> In large applications it becomes tedious to configure all the beans in xml file 
+  and maintanence of this bean becomes difficult.
+
+> An alternative for this problem is "component scanning"
+
+> In component scanning container automatically detects the bean and creates the bean.
+
+> to do component scanning, beans should be marked with below annotations
+	1. spring "@Component"
+	2. java "@Named"
+
+
+To perform component scanning using  annotation
+==============================================
+step 1: use the tag <context: component-scan base-package="pkgNm"/> 
+		in the configuration xml file and specify the package to be 
+		scanned using "base-package" attribute
+
+Note: 	<context: component-scan> tag automatically enables annotation and 
+		also searches and creates the bean in the specified packages.
+
+step 2: use the annotation @Component (for spring)/ @Named (for java) on the 
+		class which has to be marked as bean, this annotation 
+		marks the class as an auto detectable bean
+	
+	eg 1: for spring configuration
+			package edu.jspiders;
+			import org.springframework.stereotype.Component;
+			
+			@Component
+			public class A
+			{
+				// code goes here
+			}
+
+
+	eg 2: for java configuration
+			package edu.jspiders
+			import javax.inject.Named;
+			
+			@inject
+			public class A
+			{
+				// code goes here
+			}
+
+
+
+Q1. What is the difference between <context:annotation-config/> and 
+<context: component-scan/>?
+ans:  <context: annotation-config/> tag only activates or enables the annotations.
+         <context: component-scan/> tag enables annotations
+		 and also scans the specified packages to create the bean.
+
+
+
+
+
+
+
+
+Q2. Difference between constructor injection and setter injection
+-----------------------------------------------------------------------------------------
+|	setter injection						|	constructor injection					|
+-----------------------------------------------------------------------------------------
+| 1. it uses setter method to do dependency	| 1. it uses constructor to do dependency	|
+|	 injection								|	 injection								|
+| 2. setter injection is used for optional	| 2. constructor injection is used 			|
+|	 dependencies							| 	 for mandatory dependencies.			|
+| 3. Dependency injection might fail		| 3. object will never be created until the	|
+| 	 and an object might be created without	|    dependency is ready  since the			|
+|	 initialisation.						| 	 constructor is invoked.				|
+|											|											|
+											|
+|											|											|
+-----------------------------------------------------------------------------------------
+
+
+
+Some important annotations of Spring
+==============================
+@Configuration: this annotation is used to let Spring know that it’s a Configuration class.
+
+@ComponentScan:this  annotation is used with @Configuration annotation 
+to specify the packages to look for Component classes.
+
+@Bean: this annotation is used to let Spring framework know that this method 
+should be used to get the bean implementation to inject in Component classes.
+
+@Value: this  annotation provides a convenient way to inject property 
+		values into components.
+
+@Qualifier: this  annotation is used along with @Autowired to remove 
+		the confusion by specifying which exact bean will be wired.
+
+@Required : This  annotation is applied to bean property setter methods.
+
+
+
+
+Bean scopes in Spring
+==================
+Spring has 5 types of scopes
+1. Singleton(default): in this scope only one instance will be created 
+	for the given class and will return same instance whenever we call getBean(). 
+2. prototype: when we specify scope as "prototype", a new instance will be 
+	created everytime we call a getBean().
+3. request: creates a bean instance per HTTP request, this scope can only be 
+			used with web apps.
+4. session: creates a bean instance per HTTP session, this scope can only be 
+			used with web apps.
+5. globalSession: creates a bean per global HTTP session. this scope is only applicable 
+				for portlet applications.
+
+Note: Scopes can be declared either in xml configuration or annotations. 
+
+eg for setting scope using xml:
+
+<bean id="classA" class="edu.jspiders.ClassA" scope="singleton"/>
+
+eg for setting scope using annotation
+
+@Component
+@Scope("singleton")
+class ClassA
+{
+	// some code
+}
+
+
+Life cycle of Spring Bean 
+====================
+> Bean Life cycle is controlled by Container i.e from bean 
+  instantiation to bean destruction.
+
+> Life cyle of bean is very easy to understand
+
+> Once the bean is instantiated it needs some properties or 
+  dependencies to be initialised to make bean a usable object.
+
+> Once the bean is no longer required it should be removed from the container
+  for this some clean up code is required.
+
+> The life cycle of beans consist of call back methods which can be categorized 
+  broadly in two groups:
+	a. Post initialization call back methods
+	b. Pre destruction call back methods
+
+Life cycles methods of spring bean
+===========================
+>It can be declared in any of the following way
+
+1. programmatic
+2. declarative
+
+
+> life cycle methods using programmatic way  is "afterPropertiesSet()" and "destroy()"
+> it can be used by implementing 2 interfaces
+	a. InitializingBean
+	b. DisposableBean
+
+> InitializingBean interface declares afterPropertiesSet() which is executed 
+	during the creation of bean instance.We can write any initializing logic here.  
+> DisposableBean interface has destroy() which is executed before the destruction of bean. We can write any
+	cleanup logic in this method.
+> However this approach is not recommended as it is invasive and will 
+	create tight coupling with spring framework.
+
+
+
+> In a Declarative way we can write our methods and make them as custom life cycle methods with a 
+  configurations.
+
+> declarative is non invasive which is recommended
+> configurations can be done in 2 ways i.e either by xml or annotations
+
+using xml
+========
+> write your own methods and specify that as life cycle method in a xml  file.
+> using "init-method" or "destroy-method"  attribute inside <bean> tag.
+
+> eg: <bean id="classA" class="edu.jspiders.ClassA" scope="singleton" 
+       init-method="myInit" destroy-method="myDestroy"/>
+
+using annotations
+==============
+> write your own methods and specify them as life cyle methods using annotations 
+  "@PostConstruct" and "@PreDestroy"
+
+> both @PostConstruct and @PreDestory are java configured annotations.
+
+> the method which is annotated with @PostConstruct annotation will execute 
+  after the creation of bean.
+
+> the method which is annotated with @PreDestroy annotation will execute 
+  during the destruction of bean.
+
+>eg:
+	package edu.jspiders.dto;
+	import javax.annotation.PostConstruct;
+	import javax.annotation.PreDestroy;
+
+	@Component
+	public class ClassA
+	{
+		@PostConstruct
+		public void myInit() throws Exception
+		{
+			// some initialization code 
+		}
+
+		@PreDestroy
+		public void myDestroy() throws Exception
+		{
+			// some cleanup code
+		}
+	}//end of class
+
+	
+	
+	
+	
+	
+	
+	
+BeanPostProcessor
+===============
+> A bean post processor allows additional processing before and after the bean 
+initialization callback method.
+> if we want to have common processing logic for multiple beans then we can implement 
+"org.springframework.beans.factory.config.BeanPostProcessor" interface.
+
+
+
+
+
+
+
+
+
+
+
+
+
+> eg: 
+	package edu.jspiders.dto;
+	import org.springframework.beans.BeansException;
+	import org.springframework.beans.factory.config.BeanPostProcessor;
+
+	@Component
+	public class ClassB implements BeanPostProcessor
+	{	
+		@Override
+		public Object postProcessBeforeInitialization(Object bean, String beanNm)
+			throws BeansException
+		{
+			//initialization code goes here
+			return bean;
+		}//end of method
+		
+		@Override
+		public Object postProcessAfterInitialization(Object bean, String beanNm)
+			throws BeansException
+		{
+			//initialization code goes here
+			return bean;
+		}//end of method
+	}//end of class
