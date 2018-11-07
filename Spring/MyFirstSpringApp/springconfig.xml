@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="s" class="org.jsp.setterpackage.dto.StudentDTO"/>
+	
+	<bean id="e" class="org.jsp.setterpackage.dto.EmployeeDTO"/>
+
+	<bean id="a" class="org.jsp.setterpackage.dto.A">
+	
+	<property name="x" value="10"/>
+	<property name="y" value="20"/>
+	</bean>
+	
+	<bean id="b" class="org.jsp.setterpackage.dto.B">
+	
+	<constructor-arg index="0" value="10"/>
+	<constructor-arg index="1" value="20"/>
+	
+	</bean>
+	
+	<bean id="col" class="org.jsp.setterpackage.dto.ForCollection">
+	
+	<property name="set">
+	
+	<set>
+	<value>10</value>
+	</set>
+	
+	</property>
+	
+	<property name="list">
+	
+	<list>
+	<value>10</value>
+	</list>
+	
+	</property>
+	
+	<property name="map">
+	
+	<map>
+	<entry key="65" value="A"/>
+	</map>
+	
+	</property>
+	
+	</bean>
+	
+	
+</beans>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	
+	
+	<bean id="cpu" class="org.jsp.beanwiringpackage.dto.CPU">
+	</bean>
+	
+	<bean id = "ram1" class="org.jsp.beanwiringpackage.dto.Ram">
+	
+	<property name="size" value="8"/>
+	<property name="name" value="seagate"/>
+	
+	</bean>
+	
+	
+	<bean id="mother" class="org.jsp.beanwiringpackage.dto.MotherBoard">
+	
+	<property name="name" value="Intel"/>
+	<property name="year" value="2017"/>
+	
+	</bean>
+	
+	<bean id = "harddisk" class="org.jsp.beanwiringpackage.dto.HardDisk">
+	
+	<property name="size" value="500"/>
+	<property name="name" value="seagate"/>
+	
+	</bean>
+	
+	<context:annotation-config/>
+	
+</beans>
